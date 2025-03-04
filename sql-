@@ -1,0 +1,39 @@
+ create database travel_trace;
+ use travel_trace;
+ CREATE TABLE `user` ( 
+    user_id BIGINT AUTO_INCREMENT PRIMARY KEY, 
+    username VARCHAR(191) NOT NULL, 
+    password VARCHAR(191) NOT NULL, 
+    email VARCHAR(191) NOT NULL UNIQUE, 
+    role_id BIGINT NOT NULL, 
+    FOREIGN KEY (role_id) REFERENCES role(role_id) 
+);
+CREATE TABLE role (
+    role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(191) NOT NULL
+);
+CREATE TABLE location (
+    location_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(191) NOT NULL,
+    type VARCHAR(191),
+    parent_location_id BIGINT,
+    FOREIGN KEY (parent_location_id) REFERENCES location(location_id)
+);
+CREATE TABLE trail (
+    trail_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(191) NOT NULL,
+    location_id BIGINT NOT NULL,
+    created_person BIGINT NOT NULL,
+    FOREIGN KEY (location_id) REFERENCES location(location_id),
+    FOREIGN KEY (created_person) REFERENCES `user`(user_id)
+);
+CREATE TABLE content (
+    content_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    text_content TEXT,
+    file_path VARCHAR(191),
+    content_type VARCHAR(191),
+    trail_id BIGINT NOT NULL,
+    created_person BIGINT NOT NULL,
+    FOREIGN KEY (trail_id) REFERENCES trail(trail_id),
+    FOREIGN KEY (created_person) REFERENCES `user`(user_id)
+);
