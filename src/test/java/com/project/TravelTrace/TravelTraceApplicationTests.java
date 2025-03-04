@@ -1,4 +1,4 @@
-package com.example.Travel_Trace;
+package com.project.TravelTrace;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

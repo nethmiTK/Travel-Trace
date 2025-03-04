@@ -1,4 +1,4 @@
-package com.example.Travel_Trace;
+package com.project.TravelTrace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
