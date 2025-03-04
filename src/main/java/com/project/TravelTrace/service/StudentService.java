@@ -1,6 +1,5 @@
 package com.project.TravelTrace.service;
 
-import com.project.TravelTrace.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
