@@ -1,6 +1,5 @@
 package com.project.TravelTrace.repository;
 
-import com.project.TravelTrace.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
