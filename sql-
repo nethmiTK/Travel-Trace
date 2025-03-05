@@ -1,17 +1,29 @@
- create database travel_trace;
- use travel_trace;
- CREATE TABLE `user` ( 
-    user_id BIGINT AUTO_INCREMENT PRIMARY KEY, 
-    username VARCHAR(191) NOT NULL, 
+ CREATE DATABASE travel_trace;
+USE travel_trace;
+
+-- Create role table
+CREATE TABLE role (
+    role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Create user table
+CREATE TABLE user ( 
+    id BIGINT AUTO_INCREMENT PRIMARY KEY, 
+    full_name VARCHAR(191) NOT NULL, 
+    user_name VARCHAR(191) NOT NULL, 
     password VARCHAR(191) NOT NULL, 
     email VARCHAR(191) NOT NULL UNIQUE, 
+    address VARCHAR(191), 
+    contact VARCHAR(20), 
+    religion VARCHAR(50), 
     role_id BIGINT NOT NULL, 
     FOREIGN KEY (role_id) REFERENCES role(role_id) 
 );
-CREATE TABLE role (
-    role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    role_name VARCHAR(191) NOT NULL
-);
+INSERT INTO role (role_name) VALUES ('Admin'), ('User');
+CREATE INDEX idx_email ON user(email);
+
+
 CREATE TABLE location (
     location_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(191) NOT NULL,
